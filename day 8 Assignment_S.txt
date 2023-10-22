@@ -1,0 +1,287 @@
+
+
+//Q1 Solution....
+package com.sanjeev.classAssignments;
+
+import java.util.Scanner;
+
+class MyArithException extends Exception{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	MyArithException(String msg){
+		super(msg);
+	}//end of the constructor
+}//end of the myArithExc class
+
+class Calculator{
+	
+	public static int calcDouble(int num) throws MyArithException {
+		if(num < 0) {
+			throw new MyArithException("Negative values are not allowed, Please enter a Positive number");
+		}
+		if(num == 0) {
+			throw new MyArithException("Please enter a positive number greater than 0, zero value is not allowed");
+		}
+		return num + num;
+	}//end of the calcDouble method
+}//end of the calculator class
+
+
+public class MyCalcApp{
+	
+	public static void main(String[] args) {
+		try(Scanner sc = new Scanner(System.in)){
+		System.out.println("Please enter a Integer value ");
+		int num = sc.nextInt();
+		System.out.println(Calculator.calcDouble(num));
+		}//end try
+		catch(MyArithException mae) {
+			System.out.println(mae);
+		}//end catch
+	}//end of the main method
+}//end of the myCalApp class
+
+//Q2 Solution......
+
+//MyMath Class & MyDemo Class
+
+package com.sanjeev.classAssignments;
+
+import com.sanjeev.assignmentsInterfaces.NumberNotDivisibleBySevenException;
+
+class MyMath{
+	
+	public void disp(int num) throws NumberNotDivisibleBySevenException{
+		
+		if(num % 7 != 0) {
+			throw new NumberNotDivisibleBySevenException("Number is not divisible by seven");
+		}//end if
+		System.out.println("Number " + num + " is properly divisible by 7");
+	}//end of disp method
+}//end of the myMath class
+
+public class MyDemo{
+	
+	public static void main(String[] args) {
+		
+		try {
+		MyMath mm = new MyMath();
+		mm.disp(49);
+		}//end try
+		catch(NumberNotDivisibleBySevenException e) {
+			System.out.println(e);
+		}//end catch
+	}//end of the main method
+}//end of the myCalApp class
+
+//NumberNotDivisibleBySevenException code
+/**
+ * 
+ */
+package com.sanjeev.assignmentsInterfaces;
+
+/**
+ * @author Sanjeev deshmukh
+ *
+ */
+
+public class NumberNotDivisibleBySevenException extends Exception {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	/**
+	 * @param msg // the message you pass as a param will go to the parent class parameterized constructor
+	 */
+	public NumberNotDivisibleBySevenException(String msg) {
+		super(msg);
+	}//end of the constructor
+}//end of the class
+
+//Q3 Solution........
+
+//DemoClass & Main method
+
+package com.sanjeev.classAssignments;
+
+import java.util.Scanner;
+import com.sanjeev.assignmentsInterfaces.MyException;
+
+public class Demo{
+	
+	Scanner sc = new Scanner(System.in);
+	
+	public void disp1() {
+		try {
+		disp2();
+		}//end try
+		catch(MyException me) {
+			System.out.println(me);
+		}//end catch
+	}//end of disp1
+	
+	public void disp2() throws MyException{
+		disp3();
+	}//end disp2
+	
+	private void disp3() throws MyException {
+		System.out.println("Enter a number");
+		int num = sc.nextInt();
+		if(num > 10) {
+			throw new MyException("Number is less than 10");
+		}
+		System.out.println(num);
+	}//end disp3
+
+	public static void main(String[] args) {
+		Demo d = new Demo();
+		d.disp1();
+	
+	}//end of the main method
+}//end of the myCalApp class
+
+//MyException class extends Exception
+package com.sanjeev.assignmentsInterfaces;
+
+public class MyException extends Exception {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	public MyException(String message) {
+		super(message);
+	}//end of constructor
+
+}//end of the class myException
+
+//Q4 Solution..............................................................
+
+package com.sanjeev.classAssignments;
+
+import com.sanjeev.assignmentsInterfaces.InvalidLengthException;
+
+class Authenticator{
+	
+	private final String password;
+	
+	public Authenticator(String password) throws InvalidLengthException {
+		if(password.length() < 5 || password.length() > 9) {
+			throw new InvalidLengthException("password is too short or too long, please enter characters b/w 5-9");
+		}else 
+			this.password = password;
+	}//end of authenticator constructor
+	
+	public void done() {
+		System.out.println("successfull authentication"); 
+	}//end done
+}//end class
+
+public class Demo{
+	
+	public static void main(String[] args) {
+		try {
+			Authenticator a = new Authenticator("sanjeev");
+			a.done();
+		}catch(InvalidLengthException ile) {
+			System.out.println(ile);
+		}//end catch
+	}//end of the main method
+}//end of the myCalApp class
+
+//InvalidLengthException class
+package com.sanjeev.assignmentsInterfaces;
+
+/**
+ * @author Sanjeev
+ *
+ */
+public class InvalidLengthException extends Exception {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	/**
+	 * @param message This message will go to the parent class parameterized constructor.
+	 */
+	public InvalidLengthException(String message) {
+		super(message);
+	}
+
+}
+//Q5 Solution........
+
+package com.sanjeev.classAssignments;
+
+import com.sanjeev.assignmentsInterfaces.ResourceNotAllocatedException;
+
+class MyResource implements AutoCloseable
+{
+	public MyResource(int capacity) throws ResourceNotAllocatedException
+	{
+		if(capacity>100)
+		{
+			throw new ResourceNotAllocatedException("not sufficient space");
+		}//end if
+	}//end constructor
+	
+    void disp()
+    {
+    	System.out.println("successful");
+    }//end disp
+    
+	@Override
+	public void close()  {
+		System.out.println("resource is closed");
+	}//end close
+}//end class
+
+public class Demo{
+	
+	public static void main(String[] args) {
+		MyResource mr;
+		try {
+			mr = new MyResource(200);
+			mr.disp();
+			mr.close();
+		} catch (ResourceNotAllocatedException e) {
+			System.out.println(e);
+		}//end catch
+	}//end of the main method
+}//end of the myCalApp class
+
+//ResourceNotAllocatedException class
+
+/**
+ * 
+ */
+package com.sanjeev.assignmentsInterfaces;
+
+/**
+ * @author Sanjeev
+ *
+ */
+public class ResourceNotAllocatedException extends Exception {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * @param message This message will go to the parent class parameterized constructor i.e Exception class and parent class will provide toString() method.
+	 */
+	public ResourceNotAllocatedException(String message) {
+		super(message);
+	}//end constructor
+}//end class
+

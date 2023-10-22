@@ -1,0 +1,206 @@
+package Devpackage;
+class Myclass{
+	int num;
+	public void set(int n) {
+		num=n;
+
+	}
+	public int get() {
+		     return num;
+	}
+	public String toString() {
+		return "["+num+"]";
+	}
+}
+
+class Everything{
+	  void perform(Object ...objects ) {
+		  for(Object i: objects) {
+			  System.out.println(i);
+		  }
+	  }
+}
+
+
+public class Demo1 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+             Myclass m=new Myclass();
+             m.set(10);
+             System.out.println(m);
+             Everything e=new Everything();
+             e.perform(m);
+	}
+
+}
+
+
+question 2
+
+
+
+package Devpackage;
+public class sample{
+	private char ch;
+	sample(char ch){
+		this.ch=ch;
+	}
+	public String toString() {
+		return "["+ch+"]";
+	}
+	
+	public boolean equals(Object ref) {
+		return ch==((sample)(ref)).ch;
+	}
+	
+	public int hashCode() {
+		return (int)ch;
+	}
+	
+	public static void main(String []args) {
+		sample s=new sample('A');
+		sample s1=new sample('A');
+		System.out.println(s);
+		System.out.println(s1);
+		if(s1.equals(s1)) {
+			System.out.println("equal");
+		}
+		else {
+			System.out.println("not equal");
+		}
+		System.out.println(s.hashCode());
+		System.out.println(s1.hashCode());
+		
+	}
+}
+
+
+
+question3
+
+
+package Devpackage;
+
+class A{
+public void	afun(){
+		System.out.println("in a fun");
+	}
+}
+
+class B{
+	public void bfun() {
+		System.out.println("in b fun");
+	}
+}
+
+class c{
+	public void cfun() {
+		System.out.println("in c fun");
+	}
+}
+
+class D{
+	public void dfun() {
+		System.out.println("in d fun");
+	}
+}
+
+public class sample{
+	public static void main(String[]args) {
+		Object[]a=new Object[4];
+		a[0]=new A();
+		a[1]=new B();
+		a[2]=new c();
+		a[3]=new D();
+		for(int i=0;i<4;i++) {
+			if(a[i] instanceof c) {
+				c c1=(c)a[i];
+				c1.cfun();
+			}
+		}
+	}
+	
+	
+	
+}
+
+
+Question 4
+
+
+
+package Devpackage;
+
+class Aritist{
+	 public void perform() {
+		 System.out.println("in artisist perform");
+	 }
+}
+class Actor extends Aritist  {
+	 public void perform() {
+		 System.out.println("in artisist perform");
+	 }
+	 public void change() {
+		 System.out.println("change setup");
+	 }
+}
+
+class Singer extends Aritist  {
+	 public void perform() {
+		 System.out.println("in artisist perform");
+	 }
+}
+class Musician extends Aritist  {
+	 public void perform() {
+		 System.out.println("in artisist perform");
+	 }
+}
+
+
+public class sample{
+	public static void main(String []args) {
+		   Aritist []a=new Aritist[3];
+		   a[0]=new Actor();
+		   a[1]=new Singer();
+		   a[2]=new Musician();
+		   for(int i=0;i<3;i++) {
+			   if(a[i]instanceof Actor) {
+			            Actor ar=(Actor)a[i];
+			            ar.change();
+			   }
+		   }
+		
+		
+		
+		
+		
+		
+		
+	}
+}
+
+
+question6
+
+
+
+package Devpackage;
+
+import java.lang.reflect.*;
+public class sample{
+	public static void mian(String[]args) {
+		Class c=null;
+		try {
+			c=Class.forName(args[0]);
+		}
+		catch(Exception e) {
+			System.out.println(e);
+		}
+		
+		Method []m=c.getDeclaredMethods();
+		for(int i=0;i<m.length;i++) {
+			System.out.println(m);
+		}
+	}
+}

@@ -1,0 +1,426 @@
+1.
+
+
+
+
+
+
+
+
+package java_core;
+
+interface Shape{
+	
+	void draw();
+}
+
+class Triangle implements Shape{
+	
+	public void draw()
+	{
+		System.out.println("draw a triangle");
+	}
+}
+
+class Rectangle implements Shape{
+	
+	public void draw()
+	{
+		System.out.println("draw a rectangle");
+	}
+}
+
+class Circle implements Shape{
+	
+	public void draw()
+	{
+		System.out.println("draw a circle");
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+import devpack.Shape;
+public class ShapeDemo  {
+	
+	public static void main(String[] args) {
+		
+		Shape s[] = new Shape[3];
+		s[0] = new Triangle();
+		s[1] = new Rectangle();
+		s[2] = new Circle();
+		
+		for(int i=0; i<s.length; i++)
+		{
+			s[i].draw();
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+2.
+
+
+
+
+
+
+
+
+
+
+
+
+package java_core;
+
+public interface MouseHandler
+{
+	void mouseClicked();
+	void mousePressed();
+	void mouseReleased();
+}
+public interface WindowHandler
+{
+	void windowClosing();
+	void windowClosed();
+}
+
+public class WindowGUIApp implements MouseHandler,WindowHandler
+{
+
+	public void windowClosing() {
+		
+		System.out.println("windowClosing");
+	}
+
+	public void windowClosed() {
+		
+		System.out.println("windowClosed");
+	}
+
+	public void mouseClicked() {
+		
+		System.out.println("mouseClicked");
+	}
+
+	public void mousePressed() {
+		
+		System.out.println("mousePressed");
+	}
+
+	public void mouseReleased() {
+		
+		System.out.println("mouseReleased");
+	}
+}
+public class Demo
+{
+	public static void main(String[] args) {
+		
+		WindowGUIApp obj1 = new WindowGUIApp();
+		obj1.mouseClicked();
+		obj1.mousePressed();
+		obj1.mouseReleased();
+		obj1.windowClosed();
+		obj1.windowClosing();
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+3.
+
+
+
+
+
+
+
+
+
+
+
+
+package java_core;
+
+public interface PersistenceMechanism {
+
+	void writeData(String ref);
+	String readData();
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+import devpack.PersistenceMechanism;
+package java_core;
+
+
+class FileSystem implements PersistenceMechanism
+{
+	public void writeData(String ref)
+	{
+		System.out.println("write data in filesystem");
+	}
+	public String readData()
+	{
+		return "read data in filesystem";
+	}
+}
+
+class DatabaseSystem implements PersistenceMechanism
+{
+	public void writeData(String ref)
+	{
+		System.out.println("write data in databasesystem");
+	}
+	public String readData()
+	{
+		return "read data in databasesystem";
+	}
+}
+
+class BigdataSystem implements PersistenceMechanism
+{
+	public void writeData(String ref)
+	{
+		System.out.println("write data in bigdatasystem");
+	}
+	public String readData()
+	{
+		return "read data in bigdatasystem";
+	}
+}
+
+public class Demo {
+	
+	public static void main(String[] args) {
+		
+		PersistenceMechanism p[] = new PersistenceMechanism[3];
+		
+		p[0] = new FileSystem();
+		p[1] = new DatabaseSystem();
+		p[2] = new BigdataSystem();
+		
+		for(int i=0; i<p.length; i++)
+		{
+			System.out.println(p[i].getClass().getSimpleName());
+		}
+		
+		p[2].writeData("abc");
+		System.out.println(p[2].readData());
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+4.
+
+
+
+
+
+
+
+
+
+
+
+
+package java_core;
+
+interface Vehicle { 
+    
+ 
+    void changeGear(int a); 
+    void speedUp(int a); 
+    void applyBrakes(int a); 
+} 
+
+
+
+
+
+
+
+
+
+
+
+
+import devpack.Vehicle;
+package java_core;
+
+class FourWheeler implements Vehicle
+{
+	public void changeGear(int a)
+	{
+		System.out.println("changing gear in fourwheeler");
+	}
+	public void speedUp(int a)
+	{
+		System.out.println("speedup in fourwheeler");
+	}
+	public void applyBrakes(int a)
+	{
+		System.out.println("applybrakes in fourwheeler");
+	}
+}
+
+
+class TwoWheeler implements Vehicle
+{
+	public void changeGear(int a)
+	{
+		System.out.println("changing gear in twowheeler");
+	}
+	public void speedUp(int a)
+	{
+		System.out.println("speedup in twowheeler");
+	}
+	public void applyBrakes(int a)
+	{
+		System.out.println("applybrakes in twowheeler");
+	}
+}
+
+
+public class Demo {
+	
+	static void perform(Vehicle v)
+	{
+		v.changeGear(1);
+		v.speedUp(2);
+		v.applyBrakes(3);
+	}
+	
+	public static void main(String[] args) {
+		
+		perform(new FourWheeler());
+		perform(new TwoWheeler());
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+5.
+
+
+
+
+
+
+
+
+
+
+
+
+package java_core;
+
+class Weapon
+{
+	void attack()
+	{
+	}
+}
+class Gun extends Weapon
+{
+	void attack()
+	{
+		System.out.println("attack with Gun");
+	}
+	void fillBullets()
+	{
+		System.out.println("filling bullets");
+	}
+}
+class Sword extends Weapon
+{
+	void attack()
+	{
+		System.out.println("attack with Sword");
+	}
+}
+class Bomb extends Weapon
+{
+	void attack()
+	{
+		System.out.println("attack with Bomb");
+	}
+}
+
+public class WeaponDemo
+{
+	public static void fight(Weapon ref)
+	{
+		if(ref instanceof Gun)
+		{
+			Gun obj=(Gun)ref;
+			obj.fillBullets();
+		}
+		ref.attack();
+	}
+	public static void main(String args[])
+	{
+		fight(new Gun());
+		fight(new Sword());
+		fight(new Bomb());
+	}
+}
+

@@ -1,0 +1,51 @@
+DEVELOPER CODE:
+
+package pack1;
+
+/**
+ * @author sanjeev
+ */
+public class MyClass 
+{
+	private int num;
+
+	/**
+	 * @return the num
+	 */
+	public int getNum() {
+		return num;
+	}
+
+	/**
+	 * @param num the num to set
+	 */
+	public void setNum(int num) {
+		this.num = num;
+	}
+	
+	
+}
+
+
+        --------------------------
+
+
+CLIENT CODE:
+
+package client;
+import pack1.MyClass;
+public class clientpro {
+
+	public static void main(String[] args) 
+	{
+		MyClass m = new MyClass();
+		m.setNum(10);
+		System.out.println(m.getNum());
+
+	}
+
+}
+
+
+
+

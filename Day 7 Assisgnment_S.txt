@@ -1,0 +1,562 @@
+1.
+package assignment;
+
+public abstract class Course
+{
+	public void start()
+	{
+		System.out.println("starting course");
+	}
+	public abstract double getFee();
+	public abstract void evaluate();
+}
+package java_core;
+
+import assignment.Course;
+
+class DACDBDACourse extends Course {
+
+	
+	public double getFee() {
+		
+		return 110000;
+	}
+
+
+	public void evaluate() {
+		
+		System.out.println("evaluating DACDBDA students");
+	}
+	
+	
+}
+
+class MSCitCourse extends Course {
+	
+	public double getFee() {
+		
+		return 100000;
+	}
+
+
+	public void evaluate() {
+		
+		System.out.println("evaluating MSCit students");
+	}
+}
+
+public class Demo {
+	
+	static void perform (Course c) {
+		
+		c.start();
+		System.out.println("fess is " + c.getFee());
+		c.evaluate();
+		
+	}
+	
+	public static void main(String[] args) {
+		
+		perform(new DACDBDACourse());
+		perform(new MSCitCourse());
+	}
+}
+
+2.
+
+package java_core;
+
+abstract class Beverages {
+
+	public void addMilk() {
+		
+		System.out.println("adding milk");
+	}
+
+	abstract void addIngredients();
+}
+
+class Coffee extends Beverages
+{
+	void addIngredients()
+	{
+			System.out.println("adding ingredients for Coffee");
+	}
+}
+class Tea extends Beverages
+{
+	void addIngredients()
+	{
+		System.out.println("adding ingredients for Tea");
+	}
+}
+class FruitJuice extends Beverages
+{
+	void addIngredients()
+	{
+		System.out.println("adding ingredients for FruitJuice");
+	}
+}
+
+
+public class Demo {
+	
+	public static void main(String[] args) {
+		
+		Beverages b []= new Beverages [3];
+		b[0] = new Coffee();
+		b[1] = new Tea();
+		b[2] = new FruitJuice();
+		
+		for(int i=0; i<b.length; i++) {
+			b[i].addMilk();
+			b[i].addIngredients();
+		}
+	}
+}
+
+3.
+
+package java_core;
+
+abstract class Shape {
+	
+	abstract void draw();
+	
+	void show() {
+		
+		System.out.println("show the properties");
+	}
+}
+
+class Triangle extends Shape {
+	
+	void draw()
+	{
+		System.out.println("draw a triangle");
+	}
+}
+
+class Rectangle extends Shape {
+	
+	void draw()
+	{
+		System.out.println("draw a rectangle");
+	}
+}
+
+class Circle extends Shape {
+	
+	void draw()
+	{
+		System.out.println("draw a circle");
+	}
+}
+
+
+public class ShapeDemo {
+	
+	public static void main(String[] args) {
+		
+		Shape s []= new Shape [3];
+		s[0] = new Triangle();
+		s[1] = new Rectangle();
+		s[2] = new Circle();
+		
+		for(int i=0; i<s.length; i++) {
+			s[i].draw();
+			s[i].show();
+			
+	}
+}
+}
+
+4.
+
+package java_core;
+
+class UIComponent
+{
+}
+class Button extends UIComponent
+{
+}
+class TextField extends UIComponent
+{
+}
+class CheckBox extends UIComponent
+{
+}
+abstract class UIComponentCreator
+{
+	public void show(String type)
+	{
+		UIComponent comp=createUIComponent(type);
+		add(comp);
+	}
+	public void add(UIComponent component)
+	{
+		System.out.println("Added the component\t"+component);
+	}
+	public abstract UIComponent createUIComponent(String type);
+}
+
+
+class WindowsUIComponentCreator extends UIComponentCreator {
+
+	public UIComponent createUIComponent(String type) {
+		return null;
+	}	
+}
+
+
+class LinuxUIComponentCreator extends UIComponentCreator {
+
+	public UIComponent createUIComponent(String type) {
+		return null;
+	}
+}
+
+
+class MacUIComponentCreator extends UIComponentCreator {
+
+	public UIComponent createUIComponent(String type) {
+		return null;
+	}
+}
+
+
+public class UIComponentCreatorDemo {
+	
+	public static void main(String[] args) {
+		
+		WindowsUIComponentCreator obj1 = new WindowsUIComponentCreator();
+		LinuxUIComponentCreator obj2 = new LinuxUIComponentCreator();
+		MacUIComponentCreator obj3 = new MacUIComponentCreator();
+		
+		obj1.createUIComponent(null);
+		obj1.add(null);
+		obj1.show(null);
+		
+		obj2.createUIComponent(null);
+		obj2.add(null);
+		obj2.show(null);
+		
+		obj3.createUIComponent(null);
+		obj3.add(null);
+		obj3.show(null);
+	}
+}
+
+5.
+
+package java_core;
+
+public class Demo {
+	
+	public static void main(String args[]) {
+		 
+		int a,b;
+		
+		if(args.length !=2)
+		{
+			System.out.println("enter two numbers");
+		}
+		else
+		{
+			a = Integer.parseInt(args[0]);
+			b = Integer.parseInt(args[1]);
+			int sum = a+b;
+			
+			System.out.println("sum of "+a+" + "+b+" = "+sum);
+		}
+	}
+}
+
+6.
+
+package java_core;
+
+interface Shape {
+	
+	abstract void draw();
+}
+
+class Triangle implements Shape {
+	
+	public void draw()
+	{
+		System.out.println("draw a triangle");
+	}
+}
+
+class Rectangle implements Shape {
+	
+	public void draw()
+	{
+		System.out.println("draw a rectangle");
+	}
+}
+
+class Circle implements Shape {
+	
+	public void draw()
+	{
+		System.out.println("draw a circle");
+	}
+}
+
+
+public class ShapeDemo {
+	
+	static void perform(Shape s) {
+		
+		s.draw();
+	}
+	
+	public static void main(String[] args) {
+		
+		perform(new Triangle());
+		perform(new Rectangle());
+		perform(new Circle());
+	}
+}
+
+7.
+
+package java_core;
+
+interface PizzaIngredientFactory
+{
+	void createDough();
+	void createSauce();
+	void createCheese();
+	void createPepperoni();
+	void createClams();
+}
+
+class USPizzaIngredientFactory implements PizzaIngredientFactory {
+
+	public void createDough() {
+		
+		System.out.println("making dough for US");
+	}
+
+	public void createSauce() {
+
+		System.out.println("making sauce for US");
+	}
+
+	public void createCheese() {
+
+		System.out.println("using cheese in US");
+	}
+
+	public void createPepperoni() {
+
+		System.out.println("using pepperoni in US");
+	}
+
+	public void createClams() {
+
+		System.out.println("using clams in US");
+	}
+}
+
+
+class IndianPizzaIngredientFactory implements PizzaIngredientFactory {
+
+	public void createDough() {
+		
+		System.out.println("making dough for India");
+	}
+
+	public void createSauce() {
+
+		System.out.println("making sauce for India");
+	}
+
+	public void createCheese() {
+
+		System.out.println("using cheese in India");
+	}
+
+	public void createPepperoni() {
+
+		System.out.println("using pepperoni in India");
+	}
+
+	public void createClams() {
+
+		System.out.println("using clams in India");
+	}
+}
+
+public class Demo {
+	
+	public static void main(String[] args) {
+		
+		PizzaIngredientFactory arr[] = new PizzaIngredientFactory[2];
+		
+		arr[0] = new USPizzaIngredientFactory();
+		arr[1] = new IndianPizzaIngredientFactory();
+		
+		for(int i=0; i<arr.length; i++) {
+			
+			arr[i].createCheese();
+			arr[i].createClams();
+			arr[i].createDough();
+			arr[i].createPepperoni();
+			arr[i].createSauce();
+		}
+	}
+}
+
+8.
+
+package java_core;
+
+class Course
+{
+	public void start()
+	{
+		System.out.println("starting course");
+	}
+	public void stop()
+	{
+		System.out.println("stopping course");
+	}
+}
+
+class DACDBDACourse extends Course {
+	
+	public void orientation() {
+		
+		System.out.println("start / stop orientation");
+	}
+}
+
+class MSCit extends Course {
+	
+}
+
+class Basic extends Course {
+	
+}
+
+public class CourseDemo {
+	 
+	public static void main(String[] args) {
+		
+		Course c[] = new Course[3];
+		c[0] = new DACDBDACourse();
+		c[1] = new MSCit();
+		c[2] = new Basic();
+		
+		for(int i=0; i<c.length; i++) {
+			
+			c[i].start();
+			c[i].stop();
+			
+			if(c[i] instanceof DACDBDACourse)
+			{
+				DACDBDACourse d = (DACDBDACourse)c[i];
+				d.orientation();
+			}
+			}
+		}
+}
+
+9.
+
+package java_core;
+
+interface Course
+{
+	public void start();
+	public void stop();
+}
+
+class DACDBDACourse implements Course {
+	
+	public void start() {
+		System.out.println("start DAC / DBDA course");
+	}
+	
+	public void stop() {
+		System.out.println("stop DAC / DBDA course");
+	}
+	
+	public void orientation() {
+		
+		System.out.println("start / stop orientation");
+	}
+}
+
+class MSCit implements Course {
+	
+	public void start() {
+		System.out.println("start MSCit course");
+	}
+	
+	public void stop() {
+		System.out.println("stop MSCit course");
+	}
+}
+
+class Basic implements Course {
+	
+	public void start() {
+		System.out.println("start basic course");
+	}
+	
+	public void stop() {
+		System.out.println("stop basic course");
+	}
+}
+
+public class CourseDemo {
+	
+	public static void show(Course c) {
+	
+		if(c instanceof DACDBDACourse) {
+			
+			DACDBDACourse d = (DACDBDACourse)c;
+			d.orientation();
+		}
+		c.start();
+		c.stop();
+	}
+	 
+	public static void main(String[] args) {
+		
+		show(new DACDBDACourse());
+		show(new MSCit());
+		show(new Basic());
+}
+}
+
+10.
+
+package java_core;
+
+public class Demo {
+	
+	static int disp(int ... k) {
+	
+		int sum =0;
+		for(int i=0;i<k.length;i++)
+		{
+			sum+=k[i];
+		}
+		return sum;
+	}
+	
+	public static void main(String args[]) {
+		
+		int s = disp(1,2,3,4,5);
+		System.out.println(s);
+	}
+}
+
+

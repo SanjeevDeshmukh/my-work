@@ -1,0 +1,566 @@
+1.
+
+
+
+
+
+
+
+
+
+
+package java_core;
+
+class A {
+	
+	A()
+	{
+		System.out.println("in class A constructor");
+	}
+}
+
+class B extends A {
+	
+	B()
+	{
+		System.out.println("in class B constructor");
+	}
+}
+
+class C extends B {
+	
+	C()
+	{
+		System.out.println("in class C constructor");
+	}
+}
+
+public class Demo {
+	
+	public static void main(String[] args) {
+		
+		B obj1 = new B();
+		C obj2 = new C();
+		
+		
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+2.
+
+
+
+
+
+
+
+
+
+
+package java_core;
+
+class Vehicle {
+	
+	public void start()
+	{
+		System.out.println("vehicle started");
+	}
+}
+
+class FourWheeler extends Vehicle {
+	
+	public void start()
+	{
+		System.out.println("FourWheeler started");
+	}
+}
+
+public class Demo {
+	
+	public static void ready(Vehicle ref)
+	{
+		ref.start();
+	}
+	
+	public static void main(String[] args) {
+		
+		Vehicle obj1 = new FourWheeler();
+		obj1.start();
+		
+		ready(new FourWheeler());
+		ready(new Vehicle());
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+3.
+
+
+
+
+
+
+
+
+
+
+package java_core;
+
+class Parent {
+	
+	Parent()
+	{
+		System.out.println("in Parent constructor");
+	}
+}
+
+class Child1 extends Parent {
+	
+	Child1()
+	{
+		System.out.println("in Child1 constructor");
+	}
+}
+
+class Child2 extends Parent {
+	
+	Child2()
+	{
+		System.out.println("in Child2 constructor");
+	}
+}
+
+public class Demo {
+	
+	public static void main(String[] args) {
+		
+		Child1 obj1 = new Child1();
+		Child2 obj2 = new Child2();
+	}
+}
+
+
+
+
+
+
+
+
+
+
+4.
+
+
+
+
+
+
+
+
+
+
+
+
+package java_core;
+
+class Top1 {
+
+	void disp1()
+	{
+		System.out.println("in Top1 disp1");
+	}
+}
+
+class Bottom1 extends Top1 {
+
+	void disp1()
+	{
+		System.out.println("in Bottom1 disp1");
+	}
+}
+
+class Bottom2 extends Top1 {
+
+	void disp1()
+	{
+		System.out.println("in Bottom2 disp1");
+	}
+}
+
+class Bottom3 extends Top1 {
+
+	void disp1()
+	{
+		System.out.println("in Bottom3 disp1");
+	}
+}
+
+public class Demo {
+	
+	public static void position(Top1 ref) {
+		
+		ref.disp1();
+	}
+	
+	public static void main(String[] args) {
+		
+		position(new Bottom1());
+		position(new Bottom2());
+		position(new Bottom3());
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+5.
+
+
+
+
+
+
+
+
+
+package java_core;
+
+abstract class Shape {
+	
+	abstract void draw();
+}
+
+class Circle extends Shape {
+	
+	void draw()
+	{
+		System.out.println("draw a circle");
+	}
+}
+
+class Polygon extends Shape {
+	
+	void draw()
+	{
+		System.out.println("draw a polygon");
+	}
+}
+
+class Triangle extends Shape {
+	
+	void draw()
+	{
+		System.out.println("draw a triangle");
+	}
+}
+
+public class Demo {
+	
+	static void perform(Shape ref) {
+		
+		ref.draw();
+	}
+	
+	public static void main(String[] args) {
+		
+		perform(new Circle());
+		perform(new Polygon());
+		perform(new Triangle());
+		
+		
+		Shape arr[] = new Shape[3];
+		arr[0] = new Circle();
+		arr[1] = new Polygon();
+		arr[2] = new Triangle();
+		
+		for(int i=0; i<arr.length; i++) {
+			arr[i].draw();
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+6.
+
+
+
+
+
+
+
+
+
+
+
+package java_core;
+
+interface A {
+	
+	void disp1();
+}
+
+interface B extends A{
+	
+	void disp2();
+	
+}
+
+
+class C implements B{
+
+	public void disp1() {
+		
+		System.out.println("in disp1");
+	}
+
+	public void disp2() {
+		
+		System.out.println("in disp2");
+	}
+}
+
+public class Demo {
+	
+	public static void main(String[] args) {
+		
+		C obj1 = new C();
+		obj1.disp1();
+		obj1.disp2();
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+7.
+
+
+
+
+
+
+
+
+
+package java_core;
+
+class Parent1 {
+	
+	int n = 50;
+	int m = 60;
+}
+
+interface Parent2 {
+	
+	void disp1();
+	
+	void disp2();
+}
+
+class Child extends Parent1 implements Parent2 {
+	
+	public void disp1() {
+		
+		System.out.println("in disp1");
+	}
+
+	public void disp2() {
+		
+		System.out.println("in disp2");
+	}	
+}
+
+public class Demo {
+	
+	public static void main(String[] args) {
+		
+		Child obj1 = new Child();
+		obj1.disp1();
+		obj1.disp2();
+	}
+}
+
+
+
+
+
+
+
+
+
+
+8.
+
+
+
+
+
+
+
+
+
+package java_core;
+
+class Base1 {
+	
+	Base1 (int num)
+	{
+		System.out.println("inside Base1 paramerterized constructor");
+	}
+}
+
+class Sub1 extends Base1 {
+	
+	Sub1()
+	{
+		super(10);
+		System.out.println("inside sub1 no arg constructor");
+	}
+	
+	Sub1(int num)
+	{
+		super(num);
+		System.out.println("inside sub1 one parameterized constructor");
+	}
+	
+	Sub1(int num1, int num2)
+	{
+		super(num1);
+		System.out.println("inside sub1 two parameterized constructor");
+	}
+	
+}
+
+public class Demo {
+	
+	public static void main(String[] args) {
+		
+		Sub1 obj1 = new Sub1();
+		Sub1 obj2 = new Sub1(10);
+		Sub1 obj3 = new Sub1(10,20);
+	}
+}
+
+
+
+
+
+
+
+
+
+9.
+
+
+
+
+
+
+
+
+
+
+
+package java_core;
+	
+interface Game {
+	
+	abstract void play();
+}
+
+class Cricket implements Game {
+
+	public void play() {
+	
+		System.out.println("playing cricket");
+	}
+	
+}
+
+class Football implements Game {
+
+	public void play() {
+		
+		System.out.println("playing football");
+	}
+	
+}
+
+class Tennis implements Game {
+
+	public void play() {
+		
+		System.out.println("playing tennis");
+	}
+	
+}
+
+public class Demo {
+	
+	static void perform(Game ref)
+	{
+		ref.play();
+	}
+	
+	public static void main(String[] args) {
+		
+		perform(new Cricket());
+		perform(new Football());
+		perform(new Tennis());
+		
+		Game arr[] = new Game[3];
+		arr[0] = new Cricket();
+		arr[1] = new Football();
+		arr[2] = new Tennis();
+		
+		for(int i=0; i<arr.length; i++)
+		{
+			arr[i].play();
+		}
+	}
+}
+
+
+

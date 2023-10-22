@@ -1,0 +1,444 @@
+Arithmetic assignment assignment:
+
+Q1
+
+import java.util.Scanner;
+
+public class practice{
+public static void main( String[]args) {
+
+int x,y,sum;
+
+Scanner myObj = new Scanner (System.in);
+System.out.println("Enter a number:");
+x = myObj.nextInt();
+
+System.out.println("Enter another number");
+y = myObj.nextInt();
+
+int sum1 = x + y;
+System.out.println("diffrence is:" +sum1 );
+
+   }
+}
+
+
+
+Q2.
+
+import java.util.Scanner;
+
+public class practice{
+public static void main( String[]args) {
+
+int x,y,sum;
+
+Scanner myObj = new Scanner (System.in);
+System.out.println("Enter a number:");
+x = myObj.nextInt();
+
+System.out.println("Enter another number");
+y = myObj.nextInt();
+
+int difference = x - y;
+System.out.println("diffrence is:" +difference );
+
+   }
+}
+
+
+
+Q3.
+
+import java.util.Scanner;
+public class practice {
+   public static void main(String args[]){
+      Scanner sc = new Scanner(System.in);
+      System.out.println("Enter the value of the first number ::");
+      int a = sc.nextInt();
+      System.out.println("Enter the value of the first number ::");
+      int b = sc.nextInt();
+      int result = a*b;
+      System.out.println("Product of the given two numbers is ::"+result);
+   }
+}
+
+
+Q4.
+
+
+import java.util.Scanner;
+
+public class practice {
+  public static void main(String[] args) 
+  {
+    Scanner input = new Scanner (System.in);
+    System.out.print("Input the first number: ");
+    int a = input.nextInt();
+    System.out.print("Input the second number: ");
+    int b = input.nextInt();
+    int d = (a/b);
+    System.out.println();
+    System.out.println("The division of a and b is:" +d);
+  }
+}
+
+
+
+Q5.
+
+
+import java.util.Scanner;
+
+public class practice {
+	private static Scanner sc;
+	public static void main(String[] args) 
+	{
+		int number1, number2;
+		sc = new Scanner(System.in);
+		
+		System.out.print(" Please Enter the First Number : ");
+		number1 = sc.nextInt();	
+		
+		System.out.print(" Please Enter the Second Number : ");
+		number2 = sc.nextInt();	
+		
+		if(number1 > number2) 
+	    {
+			System.out.println("\n The Largest Number = " + number1);          
+	    } 
+	    else if (number2 > number1)
+	    { 
+	    	System.out.println("\n The Largest Number = " + number2);        
+	    } 
+	    else 
+	    {
+	    	System.out.println("\n Both are Equal");
+	    }		
+	}	
+}
+
+
+
+
+Q6.
+
+import java.util.Scanner;
+
+public class practice {
+   public static void main(String args[]) {
+      Scanner sc = new Scanner(System.in);
+      System.out.println("Enter a number :");
+      String num = sc.nextLine();
+      int digitSum = 0;
+     
+      for(int i = 0; i<num.length(); i++) {
+         digitSum = digitSum + num.charAt(i)-'0';
+      }
+      if(digitSum % 3 == 0) {
+         System.out.println("Given number is divisible by 3");
+      } else {
+         System.out.println("Given number is not divisible by 3");
+      }
+   }
+}
+
+
+
+
+CONTROL FLOW ASSIGNMENTS:
+
+
+Q1
+
+
+import java.util.Scanner;
+
+public class practice {
+
+	public static void main(String[] args) {
+		 int a, i;
+	        System.out.println("Enter a number you want table of: ");
+	        Scanner sc = new Scanner(System.in);
+
+	        a=sc.nextInt();
+
+	        System.out.println("Table of "+a+" is ");
+	        for(i=1; i<=10; i++)
+	        {
+	            System.out.println(a * i);
+	        }
+
+	    }
+
+	}
+
+
+Q2.
+
+
+import java.util.Scanner;
+
+public class practice {
+    public static void main(String[] args)
+    {
+        int a,b;
+        char c;
+        System.out.println("Enter 1st number: ");
+        Scanner sc = new Scanner(System.in);
+        a = sc.nextInt();
+        System.out.println("Enter 2nd number: ");
+        b = sc.nextInt();
+        System.out.println("Enter your choice: ");
+        c = sc.next().charAt(0);
+
+        switch(c)
+        {
+            case 'a':
+            System.out.println(a+b);
+            break;
+            case 'b':
+            System.out.println(a-b);
+            break;
+            case 'c':
+            System.out.println(a*b);
+            break;
+            case 'd':
+            System.out.println(a/b);
+            break;
+            default:
+            System.out.println("OOPS!");
+
+        }
+       
+    }
+}
+
+
+
+
+Q3.
+
+
+public class practice {
+    public static void main(String[] args)
+    {
+        int i;
+        for (i=1; i<=10; i++)
+        {
+            System.out.println(i);
+        }
+    }
+}
+
+
+
+Q4.
+
+
+public class practice{
+    public static void main(String[] args)
+    {
+        int i;
+        for (i=3; i<=30; i++)
+        {
+            if (i==24)
+            {
+                continue;
+            }
+
+            System.out.println(i);
+        }
+    }
+}
+
+
+
+Q5.import java.util.Scanner;
+
+public class practice {
+    public static void main(String[] args)
+    {
+        int marks;
+        System.out.println("Enter students marks: ");
+        Scanner sc = new Scanner(System.in);
+
+        marks = sc.nextInt();
+
+        if (marks>=90)
+        {
+            System.out.println("Distinction");
+        }
+        else if (marks>=75 & marks<90)
+        {
+            System.out.println("First Class");
+        }
+        else if (marks>=50 & marks<75)
+        {
+            System.out.println("Second Class");
+        }
+        else if (marks>=35 & marks<50)
+        {
+            System.out.println("Third Class");
+        }
+        else
+        {
+            System.out.println("Fail");
+        }
+    }
+}
+
+
+
+
+Q6.
+
+
+import java.util.Scanner;
+
+public class practice {
+    public static void main(String[] args)
+    {
+        int num,i,a,b;
+        System.out.println("Enter an interval: ");
+        Scanner sc = new Scanner(System.in);
+
+        a = sc.nextInt();
+        b = sc.nextInt();
+
+        for (num=a; num<=b; num++)
+            {
+                if (num > 1)
+                for (i =2; i<=num; i++)
+                {
+                if (num % i == 0)
+                    break;
+                else
+                System.out.println(num);
+                break;
+                }
+
+            }
+        }
+}
+
+
+
+Q7.
+
+
+public class practice {
+    public static void main(String[] args)
+    {
+        char i,j;
+        for (i='A';i<='C';i++)
+        {
+            for(j='a'; j<='c'; j++)
+            {
+                System.out.println(i+ " "+j );
+            }
+            System.out.println();
+        }
+    }
+}
+
+
+
+Q8.
+
+
+public class practice {
+    public static void main(String args[])
+    {
+        int rows = 5, k = 0;
+        for(int i=2;i<=5;i++){
+            for(int j=5-i;j>=1;j--){
+                System.out.print(" ");
+            }
+            for(k=1;k<2*i-1;k++){
+                if(k % 2==0){
+                    System.out.print("*");
+                }
+                else{
+                    System.out.print(" ");
+                }
+            }
+            System.out.println();
+        }
+	}
+}
+
+
+
+
+Q9.
+
+
+
+   public class practice {
+    public static void main(String args[])
+    {
+        for(int i=5;i>=1;i--){
+            for(int j=5-i;j>=1;j--){
+                System.out.print(" ");
+            }
+            for(k=1;k<2*i-1;k++){
+                if(k % 2==0){
+                    System.out.print("*");
+                }
+                else{
+                    System.out.print(" ");
+                }
+            }
+            System.out.println();
+        }
+	}
+}
+
+
+
+Q10.
+
+
+
+public class practice {
+    public static void main(String args[])
+    {
+        int rows = 5, k = 0;
+        for(int i=2;i<=5;i++){
+            for(int j=5-i;j>=1;j--){
+                System.out.print(" ");
+            }
+            for(k=1;k<2*i-1;k++){
+                if(k % 2==0){
+                    System.out.print("*");
+                }
+                else{
+                    System.out.print(" ");
+                }
+            }
+            System.out.println();
+        }
+//System.out.println();
+//System.out.println();
+
+        for(int i=5;i>=1;i--){
+            for(int j=5-i;j>=1;j--){
+                System.out.print(" ");
+            }
+            for(k=1;k<2*i-1;k++){
+                if(k % 2==0){
+                    System.out.print("*");
+                }
+                else{
+                    System.out.print(" ");
+                }
+            }
+            System.out.println();
+        }
+    }
+}
+
+
+
+
